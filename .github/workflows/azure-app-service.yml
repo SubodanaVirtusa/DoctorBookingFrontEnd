@@ -34,6 +34,16 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_3B7C8052D3604190857B37389E195BF3 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_963961F1899349EC950926E1FC2167F7 }}
 
+      - name: Disable remote build
+        uses: azure/appservice-settings@v1
+        with:
+          app-name: Doctor-Booking-Frontend
+          app-settings-json: |
+            [
+              {"name": "SCM_DO_BUILD_DURING_DEPLOYMENT", "value": "false"},
+              {"name": "WEBSITE_RUN_FROM_PACKAGE", "value": "1"}
+            ]
+
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
