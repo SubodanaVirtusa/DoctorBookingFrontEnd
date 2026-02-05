@@ -8,6 +8,9 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -24,9 +27,11 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Azure Login
+        uses: azure/login@v2
+
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: doctor-booking-frontend-amg2gje4cvgmbmg0
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
+          app-name: Doctor-Booking-Frontend
           package: .
