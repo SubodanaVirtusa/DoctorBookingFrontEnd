@@ -38,4 +38,5 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: Doctor-Booking-Frontend
-          package: .
+          package: ./build
+          startup-command: "npx serve -s /home/site/wwwroot -l 8080"
