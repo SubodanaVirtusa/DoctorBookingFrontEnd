@@ -6,7 +6,7 @@ import Stat from '../components/ui/Stat';
 import { fetchDoctors } from '../api/doctors';
 import { fetchAppointments } from '../api/appointments';
 
-const Home = () => {
+const Home = () => { 
   const [doctorCount, setDoctorCount] = useState<number | null>(null);
   const [appointmentCount, setAppointmentCount] = useState<number | null>(null);
   const [avgWaitMinutes, setAvgWaitMinutes] = useState<number | null>(null);
