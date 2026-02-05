@@ -18,7 +18,7 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     let isMounted = true;
 
     const loadStats = async () => {
