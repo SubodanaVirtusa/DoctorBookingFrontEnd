@@ -27,13 +27,6 @@ const ScrollToHash = () => {
   return null;
 };
 
-const HomePage = () => (
-  <>
-    <Home />
-    <Doctors />
-    <Appointments />
-  </>
-);
 
 function App() {
   return (
