@@ -42,6 +42,20 @@ export const apiPost = async <T, B>(path: string, body: B): Promise<T> => {
   return response.json() as Promise<T>;
 };
 
+export const apiPostForm = async <T>(path: string, body: FormData): Promise<T> => {
+  const response = await fetch(`${baseUrl}${path}`, {
+    method: 'POST',
+    body,
+  });
+
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || `Request failed: ${response.status}`);
+  }
+
+  return response.json() as Promise<T>;
+};
+
 export const apiPut = async <T, B>(path: string, body: B): Promise<T> => {
   const response = await fetch(`${baseUrl}${path}`, {
     method: 'PUT',
