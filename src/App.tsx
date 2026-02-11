@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-route
 import './App.css';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import Home from './pages/Home';
 import Doctors from './pages/Doctors';
 import Appointments from './pages/Appointments';
 import Login from './pages/Login';
@@ -36,6 +37,7 @@ function App() {
           <ScrollToHash />
           <Routes>
             <Route path="/" element={<Navigate to="/login" replace />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/doctors" element={<Doctors />} />
             <Route path="/appointments" element={<Appointments />} />
             <Route path="/login" element={<Login />} />

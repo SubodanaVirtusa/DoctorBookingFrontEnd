@@ -28,13 +28,17 @@ const Header = () => {
             </div>
           </Link>
           <nav className="nav">
-            <Link to="/">Home</Link>
-            <Link to="/doctors">Doctors</Link>
-            <Link to="/appointments">Appointments</Link>
-            <Link to="/login" onClick={handleLogout}>
-              Logout
-            </Link>
-            <Link to="/register">Register</Link>
+            <Link to="/home">Home</Link>
+            {isSignedIn && (
+              <>
+                <Link to="/doctors">Doctors</Link>
+                <Link to="/appointments">Appointments</Link>
+                <Link to="/login" onClick={handleLogout}>
+                  Logout
+                </Link>
+              </>
+            )}
+            {!isSignedIn && <Link to="/register">Register</Link>}
             <Link to="/#contact">Support</Link>
           </nav>
           {isSignedIn && (profileImageUrl || username) && (
@@ -50,11 +54,13 @@ const Header = () => {
               {username && <span className="nav-name">{username}</span>}
             </div>
           )}
-          <div className="header-cta">
-            <Link className="button button-primary" to="/appointments">
-              Book now
-            </Link>
-          </div>
+          {isSignedIn && (
+            <div className="header-cta">
+              <Link className="button button-primary" to="/appointments">
+                Book now
+              </Link>
+            </div>
+          )}
         </div>
       </Container>
     </header>

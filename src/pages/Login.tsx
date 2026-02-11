@@ -34,7 +34,7 @@ const Login = () => {
       } else {
         localStorage.removeItem('authProfileImageUrl');
       }
-      navigate('/doctors');
+      navigate('/home');
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Login failed. Please try again.';
       setError(message);
