@@ -10,6 +10,7 @@ const Home = () => {
   const [doctorCount, setDoctorCount] = useState<number | null>(null);
   const [appointmentCount, setAppointmentCount] = useState<number | null>(null);
   const [avgWaitMinutes, setAvgWaitMinutes] = useState<number | null>(null);
+  const isSignedIn = Boolean(localStorage.getItem('authToken'));
 
   const scrollToSection = (id: string) => {
     const target = document.getElementById(id);
@@ -62,6 +63,14 @@ const Home = () => {
 
   const formatCount = (value: number | null) => (value === null ? '--' : value.toString());
   const formatWait = (value: number | null) => (value === null ? '--' : `${value} min`);
+
+  if (isSignedIn) {
+    return (
+      <div id="home" className="home-minimal">
+        {/* Minimal home for signed-in users — header/menu remains visible */}
+      </div>
+    );
+  }
 
   return (
     <div id="home">
